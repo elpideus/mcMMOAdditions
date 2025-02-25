@@ -1,0 +1,11 @@
+name: mcMMOAdditions
+version: '2.0.0'
+main: com.elpideus.mcMMOAdditions.Main
+api-version: '1.21'
+authors: [ elpideus ]
+description: Improvements for mcMMO
+loadbefore: [ mcMMO ]
+commands:
+  mmo:
+    description: Main command of the plugin
+    usage: /<command> <subcommand>
