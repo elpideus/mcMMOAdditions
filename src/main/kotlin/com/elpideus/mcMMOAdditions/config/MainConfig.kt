@@ -11,6 +11,7 @@ object MainConfig {
     private lateinit var configFile: File
     lateinit var config: FileConfiguration
     var PREFIX = (ConfigSanitizer.MainConfigSanitizer.Expected.PREFIX.default as ExpectedConfigField).value as String
+    var SPACE_AFTER_PREFIX = (ConfigSanitizer.MainConfigSanitizer.Expected.SPACE_AFTER_PREFIX.default as ExpectedConfigField).value as Boolean
 
     fun initialize(plugin: JavaPlugin) {
         if (!MainConfig::plugin.isInitialized) {
@@ -19,6 +20,7 @@ object MainConfig {
             if (!configFile.exists()) plugin.saveResource("config.yml", false)
             config = plugin.config
             PREFIX = plugin.config.getString("prefix") ?: (ConfigSanitizer.MainConfigSanitizer.Expected.PREFIX.default as ExpectedConfigField).value as String
+            SPACE_AFTER_PREFIX = plugin.config.getBoolean("space-after-prefix") || SPACE_AFTER_PREFIX
         }
     }
 

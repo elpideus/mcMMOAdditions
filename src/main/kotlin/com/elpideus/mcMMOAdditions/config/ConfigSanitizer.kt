@@ -21,6 +21,16 @@ object ConfigSanitizer {
                 override val expectedType = String::class.java
             }
 
+            val SPACE_AFTER_PREFIX = object : ExpectedConfigProperty {
+                override val name = "space-after-prefix"
+                override val default = ExpectedConfigField(
+                    value = true,
+                    required = false,
+                    outOfTheBoxDefault = false
+                )
+                override val expectedType = Boolean::class.java
+            }
+
             val CONSOLE = object: ExpectedConfigProperty {
                 override val name: String = "console"
                 override val default = mapOf(

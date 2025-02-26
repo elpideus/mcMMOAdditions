@@ -2,6 +2,9 @@ package com.elpideus.mcMMOAdditions
 
 import com.elpideus.mcMMOAdditions.config.MainConfig
 import com.elpideus.mcMMOAdditions.logging.Color
+import de.themoep.minedown.adventure.MineDown
+import org.bukkit.command.CommandSender
+import org.bukkit.entity.Player
 
 
 /**
@@ -53,7 +56,7 @@ object Logging {
      */
     private fun parse(content: String, usePrefix: Boolean = true, autoResetColor: Boolean = true, autoSpace: Boolean  = true): String {
         var editedContent = if (usePrefix) MainConfig.PREFIX + if (autoSpace) " " else "" + content else content
-        if (autoResetColor) editedContent += Color.RESET
+        if (autoResetColor) editedContent += MineDown.parse(content + Color.RESET)
         val result = StringBuilder(editedContent.length)
 
         var index = 0
@@ -94,7 +97,6 @@ object Logging {
     fun print(content: String) {
         println(parse(content))
     }
-
 
     /**
      * Prints an error message to the console in red with Minecraft-styled color formatting.
